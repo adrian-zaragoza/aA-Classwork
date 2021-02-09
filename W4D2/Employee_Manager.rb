@@ -7,21 +7,27 @@ class Employee
     end
 
     def bonus(multiplier)
-        if !title.include?("manager")
+        if self.employees.empty?
             self.salary * multiplier
         else
-            sum = self.salary
-            
-            self.employees
+            sum = 0
+            people = self.employees
+            unless people.empty?
+                person = people.shift
+                sum += person.salary
+                person.employees.each do |emp|
+                    people << emp
+                end
+            end
+            sum * multiplier
         end
     end
 end
 
-class Manager
-    extend Employee
-    def initialize(manager_name)
-        @manager_name = manager_name
-        @employees = []
+class Manager < Employee
 
+    def initialize(name, title, salary, boss)
+        @employees = []
+        super
     end
 end
