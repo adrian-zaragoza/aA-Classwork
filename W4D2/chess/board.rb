@@ -9,11 +9,16 @@ class Board
     self.populate
 
   end
+
   def populate
     @rows.each.with_index do |row, i|
-      if i == 0 || i == 1 || i == 6 || i == 7
+      if i == 0 || i == 1
         row.each.with_index do |_, j|
-          @rows[i][j] = Piece.new
+          @rows[i][j] = Piece.new(:white, @rows, [i, j])
+        end
+      elsif i == 6 || i == 7
+        row.each.with_index do |_, j|
+          @rows[i][j] = Piece.new(:black, @rows, [i, j])
         end
       end
     end
