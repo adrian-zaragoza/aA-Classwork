@@ -40,22 +40,11 @@ class Manager < Employee
             sum += person.salary
             if person.is_a?(Manager)
                 person.employees.each do |emp|
-                people << emp
+                    people << emp
                 end
             end
         end
         sum * multiplier
-        # total_subsalary = 0
-        # self.employees.each do |employee|
-        #   if employee.is_a?(Manager)
-        #     total_subsalary += employee.salary + employee.total_subsalary
-        #   else
-        #     total_subsalary += employee.salary
-        #   end
-        # end
-    
-        # total_subsalary
-
     end
 
 
