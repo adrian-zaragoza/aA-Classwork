@@ -6,23 +6,27 @@ class Board
 
   def initialize
     @rows = Array.new(8) { Array.new(8) }
-    #@null_piece 
-    @queens = [Piece.new("white", @rows, [7,3]), Piece.new("black", @rows, [0,5])]
-    # @kings = []
-    # @rooks = []
-    # @knight = []
-    # @bishops = []
-    # @pawns = []
+    self.populate
+
+  end
+  def populate
+    @rows.each.with_index do |row, i|
+      if i == 0 || i == 1 || i == 6 || i == 7
+        row.each.with_index do |_, j|
+          @rows[i][j] = Piece.new
+        end
+      end
+    end
   end
 
   def [](pos)
     row, col = pos
-    @board[row][col]
+    @rows[row][col]
   end
 
   def []=(pos, value)
     row, col = pos
-    @board[row][col] = value
+    @rows[row][col] = value
   end
 
   def valid_pos?(pos)
@@ -31,17 +35,15 @@ class Board
     true
   end
 
-  def move_piece(color, start_pos, end_pos)
-    if @board[start_pos] == nil || self.color != color
+  def move_piece(start_pos, end_pos)
+    if !valid_pos?(start_pos)
       raise "There is no piece at start position!"
-    elsif !valid_pos?([end_pos]) && self.color == color
+    elsif !valid_pos?(end_pos)
       raise "The piece cannot be moved to this end position!"
     end
-    piece = @board[start_pos]
-    piece.pos = end_pos
-
-    @board[start_pos] = :null_piece
-    @board[end_pos] = piece
+    piece = self[start_pos]
+    self[start_pos] = nil
+    self[end_pos] = piece
   end
 
   private
