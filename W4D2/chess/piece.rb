@@ -1,4 +1,5 @@
-require_relative "board.rb"
+
+
 
 class Piece
 
@@ -15,3 +16,4 @@ class Piece
     self[row][col] = val
   end
 end
+

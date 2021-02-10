@@ -11,8 +11,15 @@ module Slideable
   end
 
   def moves
-    directions = move_dirs
-    grow_unblocked_moves_in_dir(dx, dy)
+    directions_arr = move_dirs
+    all_possible_pos = []
+
+    directions_arr.each do |pos|
+      current_pos_arr = grow_unblocked_moves_in_dir(pos[0], pos[1])
+      all_possible_pos.concat(current_pos_arr)
+    end
+    
+    all_possible_pos
   end
 
   #private
@@ -33,9 +40,11 @@ module Slideable
       else
         new_color = @board[new_position].color
         possible_positions << new_position if our_color != new_color
-        break;
+        break
       end
       new_position = [new_position[0] + dx, new_position[1] + dy]
     end
+
+    possible_positions
   end
 end

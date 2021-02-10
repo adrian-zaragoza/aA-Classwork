@@ -1,4 +1,5 @@
 require_relative "piece.rb"
+require_relative "rook.rb"
 
 class Board
 
@@ -54,3 +55,4 @@ class Board
   private
   :null_piece
 end
+
