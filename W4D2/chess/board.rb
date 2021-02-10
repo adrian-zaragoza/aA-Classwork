@@ -6,8 +6,11 @@ require_relative "bishop.rb"
 require_relative "king.rb"
 require_relative "pawn.rb"
 require_relative "null_piece.rb"
+require_relative "populate_module.rb"
 
 class Board
+
+  include Populate
 
   attr_reader :rows
 
@@ -21,53 +24,11 @@ class Board
     populate_null
     populate_pawn
     populate_rook
-    
+    populate_knight
+    populate_bishop
+    populate_queen
+    populate_king
   end
-
-  def populate_null
-    (2..5).each do |i|
-      @rows[i].each_with_index do |_, j|
-        @rows[i][j] = NullPiece.new
-      end
-    end
-  end
-
-  def populate_pawn
-    i = 1
-    @rows[i].each_with_index do |_, j|
-        @rows[i, j] = Pawn.new(:white, rows, [i, j])
-    end
-
-    i = 6
-    @rows[i].each_with_index do |_, j|
-      @rows[i, j] = Pawn.new(:black, rows, [i, j])
-
-  end
-
-  def populate_rook
-    rook_pos = [[0, 0], [0, 7], [7, 0], [7, 7]]
-
-    rook_pos.each_with_index do |pos, i|
-      if i <= 1
-        self[pos] = Rook.new(:white, rows, pos)
-      else
-        self[pos] = Rook.new(:black, rows, pos)
-      end
-    end
-  end
-
-  def populate_knight
-    knight_pos = [[0, 1], [0, 6], [7, 1], [7, 6]]
-
-    knight_pos.each_with_index do |pos, i|
-      if i <= 1
-        self[pos] = Knight.new(:white, rows, pos)
-      else
-        self[pos] = Knight.new(:black, rows, pos)
-      end
-    end
-  end
-
 
   def [](pos)
     row, col = pos
@@ -96,7 +57,6 @@ class Board
     self[end_pos] = piece
   end
 
-  private
-  :null_piece
+  # private
+  # :null_piece
 end
-
