@@ -1,15 +1,17 @@
-
+require_relative "slideable.rb"
+require_relative "piece.rb"
 
 class Queen < Piece
 
-
+  include Slideable
+  
   def symbol
     :Q
   end
 
   private
   def move_dirs
-    [[-1,1], [-1, -1], [1, -1], [1, 1], [1, 0], [0, 1], [-1, 0], [0, -1]]
+    horizontal_dirs.concat(diagonal_dirs)
   end
 
 end

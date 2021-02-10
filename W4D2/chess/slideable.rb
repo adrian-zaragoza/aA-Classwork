@@ -22,7 +22,7 @@ module Slideable
     all_possible_pos
   end
 
-  #private
+  private
   def move_dirs
     raise "Need to implement Class#move_dirs!"
   end
