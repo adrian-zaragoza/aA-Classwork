@@ -17,7 +17,6 @@ class Board
   def initialize
     @rows = Array.new(8) { Array.new(8) }
     self.populate
-
   end
 
   def populate
@@ -46,17 +45,19 @@ class Board
     true
   end
 
-  def move_piece(start_pos, end_pos)
+  def move_piece(color, start_pos, end_pos)
     if !valid_pos?(start_pos)
       raise "There is no piece at start position!"
-    elsif !valid_pos?(end_pos)
+    elsif self.color != self[start_pos].color
+      raise "Not your piece color!"
+    elsif !valid_pos?(end_pos) || self.color != self[end_pos].color
       raise "The piece cannot be moved to this end position!"
     end
     piece = self[start_pos]
-    self[start_pos] = nil
+    self[start_pos] = @null_piece
     self[end_pos] = piece
   end
 
-  # private
-  # :null_piece
+  private
+  @null_piece = NullPiece.instance
 end

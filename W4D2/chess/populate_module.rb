@@ -69,3 +69,20 @@ module Populate
     self[[7, 4]] = King.new(:black, rows, [7, 4])
   end
 end
+
+# def populate
+#   hash_white = { 
+#     "Rook" => [[0,0], [0,7]],
+#     "Pawn" =>,
+#     "Queen" =>
+#     "King" =>
+#     "Knight" =>
+#     "Bishop" => 
+#   }
+
+#   hash_white.each do |piece, pos|
+#     pos.each do |current_pos|
+#       self[current_pos] = piece.new(:white, grid, current_pos)
+#     end
+#   end
+# end
