@@ -9,5 +9,11 @@ class Display
     end
 
     def render
+        #render board color
+        @board.each_with_index do |row, i|
+            row.each_with_index do |ele, j|
+                ((i.even? && j.even?) || (i.odd? && j.odd?)) ? ele.colorize(:background => :white) : ele.colorize(:background => :black) 
+            end
+        end
     end
 end
