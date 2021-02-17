@@ -8,6 +8,7 @@ body {
 
 h1 {
   font-size: 38px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -110,3 +111,20 @@ ol li {
   margin: 15px 0px;
 }
 
+input[type="text"], select {
+  display: block;
+  width: 175px;
+}
+
+select {
+  margin: 10px 0;
+  width: 180px;
+}
+
+textarea {
+  width: 350px;
+}
+
+label {
+  display: block;
+}
