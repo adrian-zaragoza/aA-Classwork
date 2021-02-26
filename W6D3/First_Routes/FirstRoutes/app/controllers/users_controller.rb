@@ -30,15 +30,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_user_info
-    params.require(:user).permit(:name, :email)
-  end
-
   def destroy
     user = User.find_by(id: params[:id])
     user.destroy
 
     render json: user
+  end
+
+  private
+  def new_user_info
+    params.require(:user).permit(:username)
   end
   
 end
