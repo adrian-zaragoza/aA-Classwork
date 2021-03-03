@@ -12,7 +12,21 @@ RSpec.describe User, type: :model do
       it "should return false" do
         expect(user.password("wrongpassword")).to_be false
       end
-    end
-    
+    end    
   end
+
+  describe 'username' do
+    context "with valid username" do
+      it {should validate_presence_of(:username)} 
+    end
+  end
+
+    context "without valid username" do
+     # invalid_user = User.create(username: "", password: "password")
+      it "should return false" do
+        expect(:invalid_user).to_not be valid
+      end
+    end
+ 
+
 end
