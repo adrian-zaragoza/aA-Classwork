@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <h1><%=  %></h1>
+    <title>NinetyNineCats</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <% debugger %>
+  <% if logged_in? %>
+    <% @username = current_user.username %>
+    <% @submit_value = "Log Out" %>
+  <% else %>
+    <% @username = "" %>
+    <% @submit_value = "Login" %>
+  <% end %>
+  <body>
+    <h1><%= @username %></h1>
+    <%= yield %>
+    <input type="button" value="<%= @submit_value %>" id="" action="">
+  </body>
+</html>

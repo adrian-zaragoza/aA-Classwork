@@ -1,0 +1,30 @@
+<% if action == "new" && controller = "sessions" %>
+  <% button_link_url = new_user_url %>
+  <% link_text = "Go to Sign-up" %>
+  <% url = sessions_url %>
+  <% page_header = "SIGN-IN" %>
+<% else %>
+  <% button_link_url = new_sessions_url %>
+  <% link_text = "Go to sign-in" %>
+  <% url = users_url %>
+  <% page_header = "NEW USER" %>
+<% end %>
+
+
+<h1><%= page_header %></h1>
+
+<a class = "button" href="<%= button_link_url %>"> <%=link_text %> </a>
+
+<form action="<%= url %>" method="POST">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<label for="email">Email
+  <input type="text" name="user[email]" value="">
+</label>
+
+<label for="password">Password
+  <input type="password" name="user[password]" value="">
+</label>
+
+<input type="submit" value="Submit">
+</form>
