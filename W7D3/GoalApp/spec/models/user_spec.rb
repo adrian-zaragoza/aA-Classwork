@@ -43,4 +43,21 @@ RSpec.describe User, type: :model do
       FactoryBot.build(:user, password: "wrongpassword")
     end
   end
+
+  describe "uniqueness and password length" do
+   subject(:user2) {User.create(username: 'ron weasly', password: 'password', email: "ron@hogwarts.com")}
+   
+   it "should check username for uniqueness" do
+    it {should validate_uniqueness_of(:username)}
+   end
+    
+   it "should check the length of the password to be 6 or more characters" do
+     it {should validate_length_of(:password).is_at_least(6)}
+   end
+
+   it "validates presence of email" do 
+     it {should validate_presence_of(:email)}
+   end
+  end
+
 end
