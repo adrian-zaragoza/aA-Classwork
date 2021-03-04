@@ -47,17 +47,56 @@ RSpec.describe User, type: :model do
   describe "uniqueness and password length" do
    subject(:user2) {User.create(username: 'ron weasly', password: 'password', email: "ron@hogwarts.com")}
    
-   it "should check username for uniqueness" do
+    context "should validate username as unique" do
     it {should validate_uniqueness_of(:username)}
-   end
+    end
     
-   it "should check the length of the password to be 6 or more characters" do
+    context "should check the length of the password to be 6 or more characters" do
      it {should validate_length_of(:password).is_at_least(6)}
-   end
+    end
 
-   it "validates presence of email" do 
+    context "validates presence of email" do 
      it {should validate_presence_of(:email)}
-   end
+    end
   end
 
+  describe "find user by credentials" do
+    context "with a valid username and password" do
+      it "should return the proper user" do
+        bob = User.create(username: "bob", password:"password")
+        user = User.find_by_credentials("bob", "password")
+        expect(bob.username).to eq(user.username)
+        expect(bob.password_digest).to eq(user.password_digest)
+      end
+    end
+
+    context "with invalid username and password" do
+      it "should return nil" do
+        lauren = User.create(username: "lauren", password: "123456")
+        user = User.find_by_credentials("lauren", "random")
+        expect(user).to be_nil
+      end
+    end
+  end
+
+  subject(:user) {User.create(username: "paul", password: "realpassword")}
+  describe "session token" do
+    it "assigns a token" do
+      expect(user.session_token).not_to be_nil
+    end
+    it "resets the session token" do
+      current_session_token = user.session_token
+      new_session_token = user.reset_session_token!
+      expect(current_session_token).not_to eq(new_session_token)
+    end
+  end
+
+  describe do
+    it "ensure session token" do
+      tim = User.create(username: "tim", password: "password18")
+      user = tim.ensure_session_token
+      token = tim.reset_session_token!
+      expect(user).to eq(token)
+    end
+  end
 end
