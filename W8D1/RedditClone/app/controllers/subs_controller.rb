@@ -1,4 +1,8 @@
 class SubsController < ApplicationController
+  before_action :require_moderator, only: [:edit,:update]
+  
+  
+  
   def new
     render :new
   end

@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
         session[:session_token] = nil
         @current_user = nil
     end
+
+    def require_moderator
+        if @sub.creator_id != current_user.id
+            redirect_to subs_url
+        end
+
+    end
 end
