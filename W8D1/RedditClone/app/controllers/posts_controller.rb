@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
   before_action :require_author, only:[:edit, :update]
+  before_action :require_login, only:[:new, :create, :edit, :update]
 
   def new
+    @post = Post.new
+    @sub_id = params[:sub_id]
     render :new
   end
 
   def create
     @post = Post.new(post_params)
+    @post.sub_id = params[:sub_id]
     @post.author_id = current_user.id
     if @post.save
       redirect_to post_url(@post)
@@ -39,6 +43,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:sub).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content)
   end
 end

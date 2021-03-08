@@ -1,9 +1,11 @@
 class SubsController < ApplicationController
   before_action :require_moderator, only: [:edit,:update]
+  before_action :require_login, only: [:create, :edit, :update, :new]
   
   
   
   def new
+    @sub = Sub.new
     render :new
   end
 
