@@ -1,11 +1,17 @@
 class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
-  validates :password, lenght: {minimum: 6, allow_nil: true}
+  validates :password, length: {minimum: 6, allow_nil: true}
 
   has_many :subs_created,
     class_name: "Sub",
     foreign_key: :creator_id
+
+  has_many(
+    :posts,
+    class_name: :Post,
+    foreign_key: :author_id
+  )
 
   after_initialize :ensure_session_token
   attr_reader :password
