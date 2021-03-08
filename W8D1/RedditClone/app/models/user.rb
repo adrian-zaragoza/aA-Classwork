@@ -3,9 +3,13 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :password, lenght: {minimum: 6, allow_nil: true}
 
+  has_many :subs_created,
+    class_name: "Sub",
+    foreign_key: :creator_id
+
   after_initialize :ensure_session_token
   attr_reader :password
-  
+
   def self.find_by_credentials(username, password)
     @user = User.find_by(username: username)
 
