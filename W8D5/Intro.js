@@ -47,10 +47,55 @@ class Clock {
 
   _tick() {
     this.seconds++;
-    console.log(this);
+    if (this.seconds === 60){
+      this.seconds = 0;
+      this.minutes++;
+    }
+    if(this.minutes === 60){
+      this.minutes = 0;
+      this.hour++;
+    }
+    if(this.hour === 24){
+      this.hour = 0;
+    }
     this.printTime();
     
   }
 }
 
-const clock = new Clock();
+// const clock = new Clock();
+
+
+// addNumbers
+
+const readline = require('readline');
+
+const reader = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function addNumbers(sum, numsLeft, completionCallback){
+  if(numsLeft > 0){
+    reader.question("Prompt", function(numString1){  //reader.question prompts the user in terminal, numString1 gets declared under the hood
+    sum += parseInt(numString1); // add numString1 convert to int.
+    numsLeft--;
+    console.log(sum);
+    addNumbers(sum, numsLeft, completionCallback);
+    });
+  }
+  else if(numsLeft === 0){
+    completionCallback(sum); //dont need to bind because we are not using this. we could pass in numsLeft to callback.
+  }
+}
+
+// function completionCallback(sum){ //only function is to close the reader and print out Done
+//   reader.close(); //make sure to close the reader
+//   console.log("")
+// }
+
+
+addNumbers(0, 3, sum => {
+  console.log(`Total Sum: ${sum}`);
+   reader.close()
+  });
