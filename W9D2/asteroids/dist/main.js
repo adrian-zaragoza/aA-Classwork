@@ -35,7 +35,7 @@ eval("function MovingObject(options){\n  this.pos = options[\"pos\"]\n  this.vel
   \*********************/
 /***/ ((module) => {
 
-eval("const Util = {\n  inherits(childClass, parentClass) {\n    childClass.prototype = Object.create(parentClass.prototype);\n    childClass.prototype.constructor = childClass;\n  }\n\n  // Return a randomly oriented vector with the given length.\n  \n    // randomVec(length) {\n    //   const deg = 2 * Math.PI * Math.random();\n    //   return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n    // },\n    // // Scale the length of a vector by the given amount.\n    // scale(vec, m) {\n    //   return [vec[0] * m, vec[1] * m];\n    // }\n};\n\n\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/util.js?");
+eval("const Util = {\n  inherits(childClass, parentClass) {\n    childClass.prototype = Object.create(parentClass.prototype);\n    childClass.prototype.constructor = childClass;\n  },\n  \n  // Return a randomly oriented vector with the given length.\n  randomVec(length) {\n    const deg = 2 * Math.PI * Math.random();\n    return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n  },\n  // Scale the length of a vector by the given amount.\n  scale(vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  }\n};\n\n\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/util.js?");
 
 /***/ })
 
