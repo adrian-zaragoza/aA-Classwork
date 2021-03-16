@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("//require the other js files in here.\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nwindow.MovingObject = MovingObject;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("//require the other js files in here.\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  const canvas = document.getElementById(\"game-canvas\");\n  const ctx = canvas.getContext(\"2d\")\n  window.MovingObject = MovingObject;\n  window.ctx = ctx;\n  window.draw = MovingObject.draw;\n  ctx.fillStyle = \"black\";\n  ctx.fillRect(0, 0, 640, 580);\n  const mo = new MovingObject({\n    pos: [30, 30],\n    vel: [10, 10],\n    radius: 5,\n    color: \"#00FF00\"\n  });\n  window.mo = mo;\n});\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("//require the other js files in here.\nconst MovingObject = __webpack_requ
   \******************************/
 /***/ ((module) => {
 
-eval("function MovingObject(options){\nthis.pos = options[\"pos\"]\nthis.vel = options[\"vel\"]\nthis.radius = options[\"radius\"]\nthis.color = options[\"color\"]\n};\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject(options){\n  this.pos = options[\"pos\"]\n  this.vel = options[\"vel\"]\n  this.radius = options[\"radius\"]\n  this.color = options[\"color\"]\n};\n\nMovingObject.prototype.draw = function(ctx){\n    ctx.fillStyle = this.color;\n    ctx.beginPath();\n  \n    ctx.arc(\n      this.pos[0],\n      this.pos[1],\n      this.radius,\n      0,\n      2 * Math.PI,\n      false\n    );\n  \n    ctx.fill();\n\n};\n\nMovingObject.prototype.move = function(pos, vel){\n  let endPosition = [];\n  endPosition.push((pos[0] + vel[0]));\n  endPosition.push((pos[1] + vel[1]));\n  return endPosition;\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 

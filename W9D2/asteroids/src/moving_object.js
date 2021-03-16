@@ -1,11 +1,11 @@
 function MovingObject(options){
-this.pos = options["pos"]
-this.vel = options["vel"]
-this.radius = options["radius"]
-this.color = options["color"]
+  this.pos = options["pos"]
+  this.vel = options["vel"]
+  this.radius = options["radius"]
+  this.color = options["color"]
 };
 
-MovingObject.prototype.Draw(ctx) {
+MovingObject.prototype.draw = function(ctx){
     ctx.fillStyle = this.color;
     ctx.beginPath();
   
@@ -20,5 +20,13 @@ MovingObject.prototype.Draw(ctx) {
   
     ctx.fill();
 
+};
+
+MovingObject.prototype.move = function(pos, vel){
+  let endPosition = [];
+  endPosition.push((pos[0] + vel[0]));
+  endPosition.push((pos[1] + vel[1]));
+  return endPosition;
 }
+
 module.exports = MovingObject;
