@@ -13,4 +13,28 @@
   height: 90px;
   width: 90px;
   border: 5px solid black;
+  background: grey;
+  cursor: cell;
 }
+
+.cell:hover {
+  background: yellow;
+}
+
+.x, .o {
+  background: white;
+  cursor: default;
+}
+
+.x:after{
+  content: "x";
+  font-size: 60px;
+  line-height: 80px;
+}
+
+.o:after{
+  content: "o";
+  font-size: 60px;
+  line-height: 80px;
+}
+

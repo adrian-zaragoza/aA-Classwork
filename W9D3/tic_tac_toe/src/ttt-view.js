@@ -1,3 +1,6 @@
+const Game = require("./game");
+
+
 class View {
   constructor(game, $el) {
     this.game = game;
@@ -6,16 +9,19 @@ class View {
     console.log("I'm inside the constructor")
   };
 
-  bindEvents() {};
+  bindEvents() {
+    this.$li.on('click', () => {
+      this.game.playMove(pos);
+      $li.addClass('ul > .click');
+    });
+    //how do we know x vs o
+    //how do we create a click event that stays once clicked (:after classes)
+  };
 
   makeMove($square) {};
 
   setupBoard() {
-    // grid = new Array(3);
-    // $('<ul class = "grid"></ul>')
-    // for (let i = 0; i < 10; i++) {
-    //   $('<li class = "cell"></li>')
-    // };
+
     let $ul = $('<ul class="grid"></ul>');
 
     for(let row = 0; row < 3; row++){
@@ -26,14 +32,10 @@ class View {
       }
     }
     this.$el.append($ul);
-    console.log("Inside the setupBoard")
   };
 
 
 
-  // for (let i = 0; i < 10; i++) {
-  //   $('<ul></ul>')
-  // };
 
 
 }
