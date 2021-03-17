@@ -1,19 +1,19 @@
 const MovingObject = require("./moving_object");
 const Util = require("./util");
 
-function Asteroid(pos,length){
-    MovingObject.color = COLOR();
-    MovingObject.radius = this.RADIUS();
-    MovingObject.vel = Util.randomVec(length);
-    this.pos = pos;
+const DEF = {
+    COLOR: "#FFFFFF",
+    RADIUS: 25
+}
+
+function Asteroid(options){
+    options["color"] = DEF["COLOR"];
+    options["pos"] = 
+
+    vel = Util.randomVec(length);
+    MovingObject ({pos: pos, radius: this.RADIUS(), color: this.COLOR(), vel: vel})
 }
 
 Util.inherits(MovingObject, Asteroid);
 
-Asteroid.prototype.COLOR = function(){
-    return "#FFFFFF";
-}
-
-Asteroid.prototype.RADIUS = function(){
-    return 20;
-}
+module.exports = Asteroid;

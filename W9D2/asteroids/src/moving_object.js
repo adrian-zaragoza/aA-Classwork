@@ -26,6 +26,7 @@ MovingObject.prototype.move = function(pos, vel){
   let endPosition = [];
   endPosition.push((pos[0] + vel[0]));
   endPosition.push((pos[1] + vel[1]));
+  this.pos = endPosition;
   return endPosition;
 }
 

@@ -1,3 +1,5 @@
+const MovingObject = require("./moving_object");
+
 const DIM_X = 480;
 const DIM_Y = 640;
 const NUM_ASTEROIDS = 20;
@@ -25,4 +27,10 @@ Game.prototype.draw(ctx) = function(){
     this.asteroids[i].draw(ctx);
   }
 
+}
+
+Game.prototype.moveObjects = function(){
+  for (let i = 0; i < this.asteroids.length; i++) {
+    MovingObject.move(asteroids[i].pos, asteroids[i].vel)
+  }
 }
