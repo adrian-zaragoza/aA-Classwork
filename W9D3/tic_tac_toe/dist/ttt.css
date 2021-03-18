@@ -1,3 +1,8 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-weight: 800;
+}
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +13,7 @@
   padding-left: 0;
 }
 
-.cell {
+li {
   list-style-type: none;
   height: 90px;
   width: 90px;
@@ -17,7 +22,7 @@
   cursor: cell;
 }
 
-.cell:hover {
+li:hover {
   background: yellow;
 }
 
@@ -38,3 +43,17 @@
   line-height: 80px;
 }
 
+.game-over li{
+  color: red;
+  background: white;
+}
+
+.winner-x .x {
+  background: green;
+  color: white;
+}
+
+.winner-o .o {
+  background: green;
+  color: white;
+}
