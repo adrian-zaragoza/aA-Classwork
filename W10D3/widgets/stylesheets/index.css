@@ -1,0 +1,20 @@
+p, h1, h2{
+  font-family: 'Syne Mono', monospace;
+  font-size: 30px;
+}
+
+h2{
+  display: flex;
+  background-color: orange;
+  justify-content: space-around;
+  width: 60%;
+  margin: auto;
+  padding: 5px;
+}
+
+#time{
+  display: flex;
+  border: 5px solid black;
+  width: 60%;
+  margin: auto;
+}

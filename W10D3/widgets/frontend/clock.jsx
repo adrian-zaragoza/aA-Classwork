@@ -30,7 +30,14 @@ class Clock extends React.Component{
     <div>
       <h1>Clock</h1>
       {/* <p>{`${hours}:${minutes}:${seconds}`}</p> */}
-      <p>{this.state.time.toLocaleTimeString()}</p>
+      <div id = "time">
+        <h2>Time:
+          <p>{this.state.time.toLocaleTimeString()}</p>
+          </h2>
+        <h2>Date:
+          <p>{this.state.time.toDateString()}</p>
+        </h2>
+      </div>
     </div>
     )
   }
