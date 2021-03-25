@@ -8,7 +8,7 @@ export const receiveTodo = (todoPayload)=>{
   }
 }
 
-export const receiveTodos = (todosPayload) => {
+export const receiveTodos = (todosPayload) => { //action creators
   return {
     type: RECEIVE_TODOS,
     todos: todosPayload
