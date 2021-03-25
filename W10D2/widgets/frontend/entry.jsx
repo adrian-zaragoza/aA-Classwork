@@ -6,5 +6,5 @@ import Tabs from "./tabs"
 document.addEventListener("DOMContentLoaded", () =>{
   const root = document.getElementById("root");
 
-  ReactDOM.render(<Tabs />, root);
+  ReactDOM.render(<Clock />, root);
 })

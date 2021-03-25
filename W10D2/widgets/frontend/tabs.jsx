@@ -1,5 +1,4 @@
 import React from "react"
-import Clock from "./clock"
 
 class Tabs extends React.Component {
   constructor(props) {
