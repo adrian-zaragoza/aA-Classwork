@@ -24,6 +24,7 @@ const todosReducer = (state = initialState, action)=>{
   switch (action.type) {
     case RECEIVE_TODO:
       nextState[action.todo.id] = action.todo;
+      // debugger
       return nextState;
       case RECEIVE_TODOS:
         let obj = {};
