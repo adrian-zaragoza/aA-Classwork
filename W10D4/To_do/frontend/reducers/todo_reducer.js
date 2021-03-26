@@ -32,15 +32,8 @@ const todosReducer = (state = initialState, action)=>{
         })
         return obj;
     case REMOVE_TODO:
-      debugger
-      let deleted = action.todo.id;
-      let stateCopy = state;
-      for (const key in stateCopy) {
-        if (key.id === action.todo.id) {
-          delete stateCopy[key.id]  
-        }
-      }
-      return stateCopy
+      delete nextState[action.todo.id]; 
+      return nextState;
     default:
       return state;
   }

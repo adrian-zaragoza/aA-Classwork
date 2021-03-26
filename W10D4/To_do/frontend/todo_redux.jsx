@@ -4,6 +4,8 @@ import configureStore from "./store/store";
 import { receiveTodo} from "./actions/todo_actions"
 import { receiveTodos } from "./actions/todo_actions"
 import { removeTodo } from "./actions/todo_actions"
+import * as stepActions from "./actions/step_actions"
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -13,5 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.receiveTodo = receiveTodo;
   window.removeTodo = removeTodo;
   window.receiveTodos = receiveTodos;
+  window.stepActions = stepActions;
   ReactDOM.render(<h1>Todos App</h1>, root);
 })
