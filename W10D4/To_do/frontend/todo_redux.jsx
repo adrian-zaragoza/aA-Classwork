@@ -11,7 +11,7 @@ import { receiveStep } from "./actions/step_actions"
   import { receiveSteps } from "./actions/step_actions"
   import { removeStep } from "./actions/step_actions"
 
-import App from "./components/app"
+import Root from "./components/root"
 import {allTodos} from "./reducers/selectors"
 
 
@@ -28,5 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.receiveSteps = receiveSteps;
   window.allTodos = allTodos;
   
-  ReactDOM.render(<App />, root);
+  ReactDOM.render(<Root store={store} />, root);
 })
