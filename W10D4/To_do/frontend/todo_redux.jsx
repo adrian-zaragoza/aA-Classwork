@@ -12,7 +12,7 @@ import { receiveStep } from "./actions/step_actions"
   import { removeStep } from "./actions/step_actions"
 
 import App from "./components/app"
-
+import {allTodos} from "./reducers/selectors"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.receiveStep = receiveStep;
   window.removeStep = removeStep;
   window.receiveSteps = receiveSteps;
+  window.allTodos = allTodos;
   
   ReactDOM.render(<App />, root);
 })
