@@ -1,5 +1,6 @@
-import App from "../../../app";
-
+import App from "../app";
+import React from "react";
+import {Link} from "react-router-dom";
 class PokemonIndexItem extends React.Component{
   constructor(props){
     super(props)
@@ -8,11 +9,11 @@ class PokemonIndexItem extends React.Component{
   render(){
 
     return(
-      <li className="pokemon-index-item">
-          <span>{this.props.poke.id}</span>
-          <img src={this.props.poke.imageUrl}/>
-          <span>{this.props.poke.name}</span>
-      </li>
+      <Link to="/pokemon/:pokemonId"><li className="pokemon-index-item">
+          <span>{this.props.pokemon.id}</span>
+          <img src={this.props.pokemon.imageUrl}/>
+          <span>{this.props.pokemon.name}</span>
+      </li></Link>
     );
   }
 }
