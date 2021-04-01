@@ -13,7 +13,11 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user
-      self.logout!
+      unless self.logout!
+        render @user.errors.full_messages, status: 422
+      end
+    else
+      render "user does not exist", status: 422 
     end
   end
 

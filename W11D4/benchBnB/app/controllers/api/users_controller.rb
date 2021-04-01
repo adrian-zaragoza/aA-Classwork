@@ -11,6 +11,12 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+
+    unless @user
+      render "User does not exist", status: 422
+    else
+      render :show
+    end
   end
 
   def user_params
