@@ -2,7 +2,6 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, receiveCurre
 
 export default function sessionErrorsReducer(state = [], action) {
   Object.freeze(state);
-
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return [];
